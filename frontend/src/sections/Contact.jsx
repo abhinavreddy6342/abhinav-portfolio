@@ -1,16 +1,83 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+const API_URL =
+  "https://abhinav-portfolio-backend-dnpr.onrender.com/api/contact";
+
 function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
 
-  function handleSubmit(e) {
+  const [status, setStatus] = useState({
+    type: "",
+    message: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    setSubmitted(true);
 
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 4000);
+    setIsSubmitting(true);
+    setStatus({
+      type: "",
+      message: "",
+    });
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: `${formData.subject}\n\n${formData.message}`,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to send message.");
+      }
+
+      setStatus({
+        type: "success",
+        message: "Message sent successfully. Thanks for reaching out!",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Contact form error:", error);
+
+      setStatus({
+        type: "error",
+        message:
+          "Unable to send your message right now. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -59,7 +126,6 @@ function Contact() {
             transition={{ duration: 0.8 }}
             className="relative overflow-hidden border border-white/[0.08] bg-white/[0.015] p-8 sm:p-10"
           >
-            {/* Top accent */}
             <div className="absolute left-0 top-0 h-px w-0 bg-cyan-400 transition-all duration-700 hover:w-full" />
 
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-cyan-400/60">
@@ -111,14 +177,14 @@ function Contact() {
 
               {/* Location */}
               <div className="block border-b border-white/[0.06] pb-5">
-  <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/25">
-    Location
-  </p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/25">
+                  Location
+                </p>
 
-  <p className="glitch-hover mt-2 cursor-default text-sm text-white/70 transition-colors duration-300 hover:text-cyan-300">
-    Hyderabad, India
-  </p>
-</div>
+                <p className="glitch-hover mt-2 cursor-default text-sm text-white/70 transition-colors duration-300 hover:text-cyan-300">
+                  Hyderabad, India
+                </p>
+              </div>
             </div>
 
             {/* Social links */}
@@ -152,8 +218,8 @@ function Contact() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="relative overflow-hidden border border-white/[0.08] bg-white/[0.015] p-8 sm:p-10"
           >
-            {/* Top animated line */}
-            <div className="absolute left-0 top-0 h-px w-0 bg-cyan-400 transition-all duration-700 group-hover:w-full" />
+
+            <div className="absolute left-0 top-0 h-px w-0 bg-cyan-400 transition-all duration-700 hover:w-full" />
 
             <p className="mb-8 font-mono text-xs uppercase tracking-[0.3em] text-cyan-400/60">
               Send A Message
@@ -174,6 +240,8 @@ function Contact() {
                   id="name"
                   name="name"
                   type="text"
+                  value={formData.name}
+                  onChange={handleChange}
                   required
                   placeholder="Enter your name"
                   className="w-full border border-white/[0.08] bg-black/30 px-5 py-4 text-sm text-white outline-none transition-all duration-300 placeholder:text-white/20 focus:border-cyan-400/40 focus:bg-cyan-400/[0.02]"
@@ -193,6 +261,8 @@ function Contact() {
                   id="email"
                   name="email"
                   type="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                   placeholder="your@email.com"
                   className="w-full border border-white/[0.08] bg-black/30 px-5 py-4 text-sm text-white outline-none transition-all duration-300 placeholder:text-white/20 focus:border-cyan-400/40 focus:bg-cyan-400/[0.02]"
@@ -212,6 +282,8 @@ function Contact() {
                   id="subject"
                   name="subject"
                   type="text"
+                  value={formData.subject}
+                  onChange={handleChange}
                   required
                   placeholder="What would you like to discuss?"
                   className="w-full border border-white/[0.08] bg-black/30 px-5 py-4 text-sm text-white outline-none transition-all duration-300 placeholder:text-white/20 focus:border-cyan-400/40 focus:bg-cyan-400/[0.02]"
@@ -230,6 +302,8 @@ function Contact() {
                 <textarea
                   id="message"
                   name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   required
                   rows="6"
                   placeholder="Write your message..."
@@ -237,28 +311,33 @@ function Contact() {
                 />
               </div>
 
+              {/* Status */}
+              {status.message && (
+                <motion.p
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`text-center font-mono text-xs tracking-wider ${
+                    status.type === "success"
+                      ? "text-cyan-300"
+                      : "text-red-400"
+                  }`}
+                >
+                  {status.message}
+                </motion.p>
+              )}
+
               {/* Submit */}
               <button
                 type="submit"
-                className="group relative w-full overflow-hidden bg-cyan-400 px-8 py-4 font-mono text-xs font-semibold tracking-[0.2em] text-black transition-all duration-300 hover:scale-[1.02] hover:bg-cyan-300 hover:shadow-[0_0_35px_rgba(34,211,238,0.2)]"
+                disabled={isSubmitting}
+                className="group relative w-full overflow-hidden bg-cyan-400 px-8 py-4 font-mono text-xs font-semibold tracking-[0.2em] text-black transition-all duration-300 hover:scale-[1.02] hover:bg-cyan-300 hover:shadow-[0_0_35px_rgba(34,211,238,0.2)] disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <span className="relative z-10 glitch-hover">
-                  {submitted ? "MESSAGE READY ✓" : "SEND MESSAGE →"}
+                  {isSubmitting ? "SENDING..." : "SEND MESSAGE →"}
                 </span>
 
                 <span className="absolute inset-0 -translate-x-full bg-white/30 transition-transform duration-500 group-hover:translate-x-0" />
               </button>
-
-              {/* Status */}
-              {submitted && (
-                <motion.p
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-center font-mono text-xs tracking-wider text-cyan-300"
-                >
-                  Thanks! We'll connect this form to the backend next.
-                </motion.p>
-              )}
 
             </form>
           </motion.div>
@@ -273,8 +352,8 @@ function Contact() {
           className="mt-12 text-center"
         >
           <p className="glitch-hover cursor-default font-mono text-[10px] uppercase tracking-[0.3em] text-cyan-300">
-  Currently open to software engineering & AI opportunities
-</p>
+            Currently open to software engineering & AI opportunities
+          </p>
         </motion.div>
 
       </div>
