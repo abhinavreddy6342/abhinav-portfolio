@@ -8,10 +8,11 @@ The portfolio focuses on my interests across **Software Development, Artificial 
 
 ## 🌐 Live Demo
 
-**Live Portfolio:** Coming Soon
+**Live Portfolio:** https://abhinav-portfolio-plum.vercel.app/
 
-**GitHub Repository:**
-https://github.com/abhinavreddy6342/abhinav-portfolio
+**Live Backend API:** https://abhinav-portfolio-backend-dnpr.onrender.com
+
+**GitHub Repository:** https://github.com/abhinavreddy6342/abhinav-portfolio
 
 ---
 
