@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+.font-audiowide {
+  font-family: "Audiowide", sans-serif;
+}
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #030303;
+  color: #ffffff;
+  font-family: "Space Grotesk", sans-serif;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.3);
+  color: white;
+}
+
+/* Cyberpunk glitch hover */
+.glitch-hover {
+  position: relative;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+/*
+  Glitch plays ONLY ONCE when cursor enters.
+  Duration: 0.45 seconds.
+*/
+.glitch-hover:hover {
+  animation: cyber-glitch 0.45s steps(2, end) 1;
+}
+
+@keyframes cyber-glitch {
+  0% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+
+  20% {
+    transform: translate(-2px, 1px);
+    text-shadow:
+      2px 0 #00ffff,
+      -2px 0 #ff00ff;
+  }
+
+  40% {
+    transform: translate(2px, -1px);
+    text-shadow:
+      -2px 0 #00ffff,
+      2px 0 #ff00ff;
+  }
+
+  60% {
+    transform: translate(-1px, 0);
+    text-shadow:
+      1px 0 #00ffff,
+      -1px 0 #ff00ff;
+  }
+
+  80% {
+    transform: translate(1px, 1px);
+    text-shadow:
+      -1px 0 #00ffff,
+      1px 0 #ff00ff;
+  }
+
+  100% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+}
+
+/* Subtle scanline effect */
+.cyber-scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(255, 255, 255, 0.015) 4px
+  );
+  pointer-events: none;
+}
+
+/* =========================================
+   PORTFOLIO PARTICLE BACKGROUND
+   ========================================= */
+
+.particle-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.portfolio-particle {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+
+  width: var(--size);
+  height: var(--size);
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(120, 214, 255, 0.95),
+    rgba(85, 223, 255, 0.25) 60%,
+    transparent 100%
+  );
+
+  box-shadow:
+    0 0 6px rgba(85, 223, 255, 0.35),
+    0 0 12px rgba(85, 223, 255, 0.12);
+
+  opacity: 0.18;
+
+  animation:
+    portfolioParticleFloat
+    var(--duration)
+    ease-in-out
+    var(--delay)
+    infinite alternate;
+
+  pointer-events: none;
+}
+
+@keyframes portfolioParticleFloat {
+  0% {
+    transform: translate3d(-10px, -10px, 0);
+  }
+
+  25% {
+    transform: translate3d(12px, 18px, 0);
+  }
+
+  50% {
+    transform: translate3d(-8px, 35px, 0);
+  }
+
+  75% {
+    transform: translate3d(14px, 20px, 0);
+  }
+
+  100% {
+    transform: translate3d(-12px, -5px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-particle {
+    animation: none;
+  }
+}
+
+/* =========================================
+   PORTFOLIO CYAN PARTICLE BACKGROUND
+   ========================================= */
+
+.portfolio-particle {
+  position: absolute;
+
+  left: var(--x);
+  top: var(--y);
+
+  width: var(--size);
+  height: var(--size);
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(180, 240, 255, 1) 0%,
+    rgba(80, 220, 255, 0.9) 35%,
+    rgba(30, 180, 255, 0.35) 65%,
+    transparent 100%
+  );
+
+  box-shadow:
+    0 0 5px rgba(100, 225, 255, 0.95),
+    0 0 12px rgba(60, 210, 255, 0.7),
+    0 0 22px rgba(30, 180, 255, 0.3);
+
+  opacity: var(--opacity);
+
+  animation:
+    portfolioParticleFloat
+    var(--duration)
+    ease-in-out
+    var(--delay)
+    infinite alternate;
+
+  pointer-events: none;
+  will-change: transform;
+}
+
+@keyframes portfolioParticleFloat {
+  0% {
+    transform: translate3d(-15px, -15px, 0) scale(0.9);
+  }
+
+  25% {
+    transform: translate3d(20px, 25px, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(-18px, 50px, 0) scale(1.15);
+  }
+
+  75% {
+    transform: translate3d(25px, 30px, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(-12px, -10px, 0) scale(0.9);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-particle {
+    animation: none;
+  }
+}
