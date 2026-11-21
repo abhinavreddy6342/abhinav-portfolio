@@ -1,3 +1,4 @@
+
 import Navbar from "./components/Navbar";
 import Home from "./sections/Home";
 import About from "./sections/About";
@@ -5,6 +6,7 @@ import Skills from "./sections/Skills";
 import Projects from "./sections/Projects";
 import Experience from "./sections/Experience";
 import Achievements from "./sections/Achievements";
+import Certifications from "./sections/Certifications";
 import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
 
@@ -51,6 +53,7 @@ function App() {
           <Projects />
           <Experience />
           <Achievements />
+          <Certifications />
           <Contact />
         </main>
 

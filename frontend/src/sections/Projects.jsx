@@ -64,6 +64,138 @@ const projects = [
     github: "https://github.com/abhinavreddy6342/Campus-Mind-Ai",
     live: null,
   },
+  {
+    number: "04",
+    name: "LUXORA",
+    category: "AI-NATIVE E-COMMERCE PLATFORM",
+    description:
+      "An AI-native full-stack commerce platform combining multi-agent AI, intelligent recommendations, marketplace vendors, inventory, authentication, orders, and automated commerce workflows.",
+    technologies: [
+      "React",
+      "Tailwind CSS",
+      "Python",
+      "FastAPI",
+      "SQLAlchemy",
+      "Groq",
+      "LangChain",
+      "JWT",
+      "Vercel",
+      "Render",
+    ],
+    github: "https://github.com/abhinavreddy6342/LUXORA",
+    live: "https://luxora-psi.vercel.app/",
+  },
+  {
+    number: "05",
+    name: "BLOGNEXUS",
+    category: "FULL-STACK BLOGGING PLATFORM",
+    description:
+      "A full-stack blogging and community platform with secure authentication, story publishing, search, categories, likes, comments, bookmarks, profile management, and cloud deployment.",
+    technologies: [
+      "React",
+      "FastAPI",
+      "PostgreSQL",
+      "JWT",
+      "REST APIs",
+      "SQLAlchemy",
+      "Vercel",
+      "Render",
+    ],
+    github: null,
+    live: "https://blognexus-ruddy.vercel.app/",
+  },
+  {
+    number: "06",
+    name: "TASKFLOW",
+    category: "FULL-STACK TASK MANAGEMENT PLATFORM",
+    description:
+      "A secure full-stack task management platform with JWT authentication, password recovery, task CRUD operations, user-specific data, REST APIs, and production deployment.",
+    technologies: [
+      "React",
+      "JavaScript",
+      "Vite",
+      "Axios",
+      "React Router",
+      "Python",
+      "FastAPI",
+      "SQLAlchemy",
+      "JWT",
+      "Argon2",
+      "Vercel",
+      "Render",
+    ],
+    github: "https://github.com/abhinavreddy6342/TASKFLOW",
+    live: "https://taskflow-kappa-snowy-65.vercel.app/",
+  },
+  {
+    number: "07",
+    name: "NOVA",
+    category: "SOVEREIGN INDUSTRIAL AI WORKBENCH",
+    description:
+      "A privacy-first, on-premise agentic AI workbench for confidential industrial workflows. Combines local large language models, retrieval-augmented generation, agentic planning, mission execution, document understanding, multimodal processing, and auditable workflows while keeping sensitive information under local control.",
+    technologies: [
+      "Python",
+      "FastAPI",
+      "React",
+      "JavaScript",
+      "Ollama",
+      "ChromaDB",
+      "SQLite",
+      "SQLAlchemy",
+      "RAG",
+      "JWT Authentication",
+      "bcrypt",
+      "PyMuPDF",
+      "python-docx",
+      "python-pptx",
+      "Tesseract OCR",
+    ],
+    github: "https://github.com/abhinavreddy6342/NOVA",
+    live: null,
+  },
+  {
+    number: "08",
+    name: "Magnus DMS QA Automation",
+    category: "QA AUTOMATION & MANUAL TESTING",
+    description:
+      "An end-to-end quality assurance project for a Document Management System, combining 20 test scenarios, 20 detailed test cases, requirements traceability, defect management, and a reusable Java-based Selenium automation framework using the Page Object Model. Includes application launch and login validation, structured test reporting, and evidence-based blocker documentation.",
+    technologies: [
+      "Java 17",
+      "Selenium WebDriver",
+      "TestNG",
+      "Maven",
+      "Page Object Model",
+      "Google Chrome",
+      "Manual Testing",
+      "RTM",
+      "Defect Management",
+    ],
+    github: "https://github.com/abhinavreddy6342/Magnus-DMS-QA-Automation",
+    live: null,
+  },
+  {
+    number: "09",
+    name: "RETRAX",
+    category: "MEMORY-AUGMENTED INCIDENT INTELLIGENCE",
+    description:
+      "An AI-powered incident intelligence platform for engineering and DevOps teams that combines current incident evidence with historical engineering experience. Uses memory-augmented AI reasoning to compare incidents, surface successful and failed remediation actions, generate operational warnings, analyze runbook experience, track investigation decisions, and feed outcomes back into organizational memory.",
+    technologies: [
+      "React",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "SQLAlchemy",
+      "Hindsight",
+      "Ollama",
+      "OpenAI SDK",
+      "Groq SDK",
+      "Pytest",
+    ],
+    github: "https://github.com/abhinavreddy6342/RETRAX",
+    live: null,
+  },
 ];
 
 function Projects() {
@@ -126,7 +258,6 @@ function Projects() {
               }}
               className="group relative overflow-hidden border border-white/[0.08] bg-white/[0.015] transition-all duration-500 hover:border-cyan-400/30 hover:bg-cyan-400/[0.02]"
             >
-
               {/* Top animated line */}
               <div className="absolute left-0 top-0 h-px w-0 bg-cyan-400 transition-all duration-700 group-hover:w-full" />
 
@@ -195,18 +326,24 @@ function Projects() {
                   <div className="mt-10 flex flex-wrap gap-4">
 
                     {/* GitHub */}
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="group/github relative overflow-hidden border border-white/10 bg-white/[0.03] px-6 py-3 font-mono text-xs tracking-widest text-white/80 transition-all duration-300 hover:border-cyan-400/50 hover:text-cyan-300"
-                    >
-                      <span className="relative z-10 glitch-hover">
-                        GITHUB ↗
-                      </span>
+                    {project.github ? (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group/github relative overflow-hidden border border-white/10 bg-white/[0.03] px-6 py-3 font-mono text-xs tracking-widest text-white/80 transition-all duration-300 hover:border-cyan-400/50 hover:text-cyan-300"
+                      >
+                        <span className="relative z-10 glitch-hover">
+                          GITHUB ↗
+                        </span>
 
-                      <span className="absolute inset-0 -translate-x-full bg-cyan-400/[0.08] transition-transform duration-500 group-hover/github:translate-x-0" />
-                    </a>
+                        <span className="absolute inset-0 -translate-x-full bg-cyan-400/[0.08] transition-transform duration-500 group-hover/github:translate-x-0" />
+                      </a>
+                    ) : (
+                      <span className="border border-cyan-400/10 bg-cyan-400/[0.02] px-6 py-3 font-mono text-xs tracking-widest text-cyan-300/40">
+                        GITHUB — COMING SOON
+                      </span>
+                    )}
 
                     {/* Live Demo */}
                     {project.live ? (
@@ -223,7 +360,7 @@ function Projects() {
                         <span className="absolute inset-0 -translate-x-full bg-white/30 transition-transform duration-500 group-hover/live:translate-x-0" />
                       </a>
                     ) : (
-                      <span className="font-mono text-xs tracking-widest text-cyan-300/40 border border-cyan-400/10 bg-cyan-400/[0.02] px-6 py-3">
+                      <span className="border border-cyan-400/10 bg-cyan-400/[0.02] px-6 py-3 font-mono text-xs tracking-widest text-cyan-300/40">
                         LIVE DEMO — COMING SOON
                       </span>
                     )}

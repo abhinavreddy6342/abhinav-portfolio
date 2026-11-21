@@ -1,21 +1,47 @@
+
 import { motion } from "framer-motion";
 
 const skillGroups = [
   {
-    title: "Programming",
+    title: "Programming Languages",
     skills: ["C", "C++", "Java", "Python", "JavaScript"],
   },
   {
-    title: "Frontend",
-    skills: ["HTML5", "CSS3", "React", "Tailwind CSS"],
+    title: "Frontend Development",
+    skills: [
+      "HTML5",
+      "CSS3",
+      "React",
+      "Tailwind CSS",
+      "Vite",
+      "Framer Motion",
+      "Recharts",
+    ],
   },
   {
     title: "Backend & APIs",
-    skills: ["FastAPI", "Node.js", "Express.js", "REST APIs"],
+    skills: [
+      "FastAPI",
+      "Flask",
+      "Node.js",
+      "Express.js",
+      "REST APIs",
+      "SQLAlchemy",
+      "Mongoose",
+      "Axios",
+    ],
   },
   {
     title: "Databases",
-    skills: ["SQL", "MySQL", "PostgreSQL", "MongoDB"],
+    skills: [
+      "SQL",
+      "MySQL",
+      "PostgreSQL",
+      "MongoDB",
+      "SQLite",
+      "LowDB",
+      "ChromaDB",
+    ],
   },
   {
     title: "AI / GenAI",
@@ -25,17 +51,48 @@ const skillGroups = [
       "LangGraph",
       "RAG",
       "LLMs",
-      "ChromaDB",
+      "Ollama",
       "Google Gemini",
       "Groq",
     ],
   },
   {
-    title: "Cloud & DevOps",
-    skills: ["AWS", "Docker", "Linux", "Git", "GitHub"],
+    title: "Data & Document Processing",
+    skills: [
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "PyMuPDF",
+      "Tesseract OCR",
+      "python-docx",
+      "python-pptx",
+    ],
   },
   {
-    title: "Core CS",
+    title: "Cloud, DevOps & Deployment",
+    skills: [
+      "AWS",
+      "GCP",
+      "Docker",
+      "Linux",
+      "Git",
+      "GitHub",
+      "Vercel",
+      "Netlify",
+      "Render",
+    ],
+  },
+  {
+    title: "Authentication & Security",
+    skills: [
+      "JWT Authentication",
+      "bcrypt",
+      "Password Hashing",
+      "Role-Based Access",
+    ],
+  },
+  {
+    title: "Core Computer Science",
     skills: [
       "Data Structures & Algorithms",
       "OOP",
@@ -75,12 +132,13 @@ function Skills() {
           <div className="mt-5 h-px w-24 bg-cyan-400/60" />
 
           <p className="mt-6 max-w-2xl leading-8 text-white/45">
-            Technologies and computer science fundamentals I use to build
-            software, AI systems, and full-stack applications.
+            Technologies, frameworks, development tools, AI ecosystems, and
+            computer science fundamentals I use to build full-stack
+            applications, intelligent AI systems, and scalable software.
           </p>
         </motion.div>
 
-        {/* Skill groups */}
+        {/* Skill Groups */}
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group, index) => (
             <motion.div
@@ -90,7 +148,7 @@ function Skills() {
               viewport={{ once: true, amount: 0.15 }}
               transition={{
                 duration: 0.6,
-                delay: index * 0.08,
+                delay: (index % 3) * 0.08,
               }}
               className="group relative border border-white/[0.08] bg-white/[0.015] p-6 transition-all duration-500 hover:border-cyan-400/30 hover:bg-cyan-400/[0.025]"
             >
@@ -108,14 +166,14 @@ function Skills() {
                 {group.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="glitch-hover text-sm text-white/55 transition-colors duration-300 hover:text-cyan-200"
+                    className="glitch-hover cursor-default text-sm text-white/55 transition-colors duration-300 hover:text-cyan-200"
                   >
                     {skill}
                   </span>
                 ))}
               </div>
 
-              {/* Bottom accent */}
+              {/* Bottom Accent */}
               <div className="absolute bottom-0 left-0 h-px w-0 bg-cyan-400 transition-all duration-500 group-hover:w-full" />
             </motion.div>
           ))}

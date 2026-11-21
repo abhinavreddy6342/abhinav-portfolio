@@ -40,7 +40,7 @@ function Achievements() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8 }}
-          className="group relative overflow-hidden border border-white/[0.08] bg-white/[0.015] p-8 transition-all duration-500 hover:border-cyan-400/30 hover:bg-cyan-400/[0.02] sm:p-10"
+          className="group relative overflow-hidden border border-white/[0.08] bg-white/[0.015] p-8 pb-24 transition-all duration-500 hover:border-cyan-400/30 hover:bg-cyan-400/[0.02] sm:p-10 sm:pb-24"
         >
           {/* Top accent */}
           <div className="absolute left-0 top-0 h-px w-0 bg-cyan-400 transition-all duration-700 group-hover:w-full" />
@@ -116,6 +116,49 @@ function Achievements() {
                 </p>
               </div>
             </div>
+          </div>
+
+          {/* Achievement Proof Links - bottom right */}
+          <div className="absolute bottom-7 left-8 right-8 flex flex-wrap justify-end gap-x-6 gap-y-3 sm:bottom-8 sm:left-10 sm:right-10">
+
+            {/* Certificate */}
+            <motion.a
+              href="/certificates/Agent_X_2026_Certificate.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{
+                x: -3,
+                scale: 1.02,
+              }}
+              transition={{
+                duration: 0.25,
+              }}
+              className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-300 transition-all duration-300 hover:text-cyan-100 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.55)]"
+            >
+              <span className="glitch-hover">
+                VIEW CERTIFICATE ↗
+              </span>
+            </motion.a>
+
+            {/* Stage Award Photo */}
+            <motion.a
+              href="/achievements/Agent_X_2026_Award_Photo.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{
+                x: -3,
+                scale: 1.02,
+              }}
+              transition={{
+                duration: 0.25,
+              }}
+              className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-300 transition-all duration-300 hover:text-cyan-100 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.55)]"
+            >
+              <span className="glitch-hover">
+                VIEW AWARD PHOTO ↗
+              </span>
+            </motion.a>
+
           </div>
 
           {/* Bottom accent */}
