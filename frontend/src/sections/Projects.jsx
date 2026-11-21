@@ -101,7 +101,7 @@ const projects = [
       "Vercel",
       "Render",
     ],
-    github: null,
+    github: "https://github.com/abhinavreddy6342/BLOGNEXUS",
     live: "https://blognexus-ruddy.vercel.app/",
   },
   {
