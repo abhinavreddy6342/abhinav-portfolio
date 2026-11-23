@@ -71,7 +71,7 @@ function Experience() {
                       <span className="h-px w-8 bg-cyan-400/30" />
 
                       <span className="font-mono text-xs text-white/30">
-                        Feb 2025 — Jun 2025
+                        Jan 2026 — March 2026
                       </span>
                     </div>
 

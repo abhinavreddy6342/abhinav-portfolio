@@ -3,6 +3,22 @@ import { motion } from "framer-motion";
 
 const certifications = [
   {
+  category: "Technical Certification",
+  period: "NPTEL · MoE, Government of India",
+  title: "NPTEL",
+  subtitle: "Data Structure and Algorithms Using Java",
+  description:
+    "Successfully completed the NPTEL certification course in Data Structure and Algorithms Using Java, achieving a consolidated score of 61%.",
+  tags: [
+    "Java",
+    "Data Structures",
+    "Algorithms",
+  ],
+  infoLabel: "Consolidated Score",
+  infoValue: "61%",
+  file: "/certificates/NPTEL_Data_Structures_Algorithms_Using_Java.pdf",
+  },
+  {
     category: "Internship",
     period: "Aug 2026 — Sep 2026",
     title: "Thiranex",
@@ -114,7 +130,6 @@ function Certifications() {
       <div className="absolute left-[-200px] top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-cyan-500/[0.035] blur-[150px]" />
 
       <div className="mx-auto max-w-6xl">
-
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -142,12 +157,10 @@ function Certifications() {
 
         {/* Certifications Timeline */}
         <div className="relative">
-
           {/* Timeline line */}
           <div className="absolute left-[7px] top-2 hidden h-full w-px bg-white/[0.08] md:block" />
 
           <div className="space-y-10">
-
             {certifications.map((certificate, index) => (
               <motion.article
                 key={certificate.file}
@@ -166,14 +179,11 @@ function Certifications() {
                 </div>
 
                 <div className="relative overflow-hidden border border-white/[0.08] bg-white/[0.015] p-8 pb-20 transition-all duration-500 hover:border-cyan-400/30 hover:bg-cyan-400/[0.02] sm:p-10 sm:pb-20">
-
                   {/* Top accent */}
                   <div className="absolute left-0 top-0 h-px w-0 bg-cyan-400 transition-all duration-700 group-hover:w-full" />
 
                   <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
-
                     <div className="max-w-3xl">
-
                       {/* Category and date */}
                       <div className="mb-4 flex flex-wrap items-center gap-3">
                         <span className="glitch-hover cursor-default font-audiowide text-xs uppercase tracking-[0.25em] text-cyan-300">
@@ -222,7 +232,6 @@ function Certifications() {
                           </span>
                         ))}
                       </div>
-
                     </div>
 
                     {/* Additional information */}
@@ -235,7 +244,6 @@ function Certifications() {
                         {certificate.infoValue}
                       </p>
                     </div>
-
                   </div>
 
                   {/* View Certificate - bottom right */}
@@ -259,11 +267,9 @@ function Certifications() {
 
                   {/* Bottom accent */}
                   <div className="absolute bottom-0 right-0 h-px w-0 bg-cyan-400 transition-all duration-700 group-hover:w-1/3" />
-
                 </div>
               </motion.article>
             ))}
-
           </div>
         </div>
       </div>
