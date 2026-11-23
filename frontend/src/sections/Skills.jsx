@@ -57,6 +57,20 @@ const skillGroups = [
     ],
   },
   {
+    title: "EPM",
+    skills: [
+      "Oracle Cloud EPM",
+      "Planning",
+      "Essbase",
+      "Smart View",
+      "EPM Automate",
+      "Groovy",
+      "Data Integration",
+      "REST APIs",
+      "AI Agent Studio Concepts",
+    ],
+  },
+  {
     title: "Data & Document Processing",
     skills: [
       "Pandas",
@@ -112,7 +126,6 @@ function Skills() {
       <div className="absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/[0.035] blur-[150px]" />
 
       <div className="mx-auto max-w-6xl">
-
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -178,7 +191,6 @@ function Skills() {
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );
